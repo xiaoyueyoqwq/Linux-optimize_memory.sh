@@ -20,7 +20,7 @@
 
 该脚本将自动执行以下操作，每一步都配有原因解释：
 
-### 1. 安装 zram-tools & memavaild
+### 1. 安装 zram-tools
 用于启用 ZRAM 压缩 swap ，和 memavaild 进行内存压力自动释放机制
 
 ```bash
@@ -52,14 +52,12 @@ sudo sysctl --system
 
 ---
 
-### 4. 安装并配置 memavaild
+### 4. 安装并配置 ZRAM 和 oomd
 
 memavaild 作为轻量级 daemon ，检测内存压力、swap 占用，在远离系统操作系统 OOM 前预先释放缓存/重启 swap
 
 ```bash
-git clone https://github.com/hakavlad/memavaild.git
-cd memavaild && ./deb/build.sh
-sudo apt install --reinstall ./deb/package.deb
+此步骤已删除，使用 ZRAM 和 oomd 替代
 ```
 
 配置 `/etc/memavaild.conf`：
@@ -120,6 +118,6 @@ sudo systemctl restart systemd-oomd
 
 自此，你就拥有一套基于 ZRAM 、oomd 和 memavaild 综合智能管理内存的高效 Linux 优化配置。
 
-如需要脚本一键优化，可以在仓库自行获取
+如需要脚本整合版（一段.sh文件运行全部操作）可以在仓库中获取。
 
 ---
